@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:linkedgates_task/core/di/service_locator.dart';
 import 'package:linkedgates_task/features/home/presentation/controllers/get%20products%20cubit/get_products_cubit.dart';
 import 'package:linkedgates_task/features/home/presentation/controllers/get%20products%20cubit/get_products_states.dart';
-import 'package:linkedgates_task/features/home/presentation/widgets/product_item.dart';
+import 'package:linkedgates_task/features/home/presentation/widgets/desktop_layout.dart';
+import 'package:linkedgates_task/features/home/presentation/widgets/mobile_layout.dart';
 import 'package:linkedgates_task/features/home/presentation/widgets/skeletonizer_builder.dart';
-import 'package:skeletonizer/skeletonizer.dart'; // Import the Skeletonizer package
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -37,7 +37,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: 10,
               );
             }
-
             if (state is GetProductsOnFailure) {
               return Center(
                 child: Column(
@@ -58,21 +57,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               );
             }
-
             if (state is GetProductsOnSuccess) {
-              return ListView.separated(
-                padding: const EdgeInsets.all(15),
-                itemBuilder: (context, index) {
-                  final product = state.products[index];
-                  return ProductList(
-                    title: product.name.toUpperCase(),
-                    imagePath: product.imageURL,
-                    description: product.productDescription,
-                    price: product.productPrice,
-                  );
+              return LayoutBuilder(
+                builder: (context, constraints) {
+                  bool isWideScreen = constraints.maxWidth > 750;
+
+                  if (isWideScreen) {
+                    return DesktopLayout(
+                      state: state,
+                    );
+                  } else {
+                    return MobileLayout(
+                      state: state,
+                    );
+                  }
                 },
-                separatorBuilder: (context, index) => const SizedBox(height: 15),
-                itemCount: state.products.length,
               );
             }
 

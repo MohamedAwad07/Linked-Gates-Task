@@ -6,7 +6,7 @@ class TextThemeHandler {
     return TextStyle(
       fontFamily: GoogleFonts.ysabeauSc().fontFamily,
       color: Colors.black54,
-      fontSize: 20,
+      fontSize: 18,
       fontWeight: FontWeight.bold,
     );
   }
@@ -20,7 +20,7 @@ class TextThemeHandler {
 
   static TextStyle priceStyle() {
     return TextStyle(
-      fontFamily: GoogleFonts.ysabeauSc().fontFamily,
+      fontFamily: GoogleFonts.roboto().fontFamily,
       fontSize: 20,
       color: Colors.redAccent,
       fontWeight: FontWeight.bold,
