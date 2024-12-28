@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:linkedgates_task/bloc_observer.dart';
 import 'package:linkedgates_task/core/di/service_locator.dart';
-import 'package:linkedgates_task/features/home/presentation/screens/home.dart';
+import 'package:linkedgates_task/features/home/presentation/screens/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

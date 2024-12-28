@@ -12,10 +12,10 @@ class GetProductsInitial extends GetProductsState {}
 
 class GetProductsLoading extends GetProductsState {}
 
-class GeProductsOnSuccess extends GetProductsState {
+class GetProductsOnSuccess extends GetProductsState {
   final List<ProductEntity> products;
 
-  const GeProductsOnSuccess({required this.products});
+  const GetProductsOnSuccess({required this.products});
 }
 
 class GetProductsOnFailure extends GetProductsState {

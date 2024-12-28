@@ -20,7 +20,7 @@ class GetProductsCubit extends Cubit<GetProductsState> {
       emit(GetProductsOnFailure(message: failure.message));
     }, (success) {
       currentProducts = success;
-      emit(GeProductsOnSuccess(products: success));
+      emit(GetProductsOnSuccess(products: success));
     });
   }
 }
