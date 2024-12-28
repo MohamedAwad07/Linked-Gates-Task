@@ -1,11 +1,14 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:linkedgates_task/bloc_observer.dart';
+import 'package:linkedgates_task/core/di/service_locator.dart';
 import 'package:linkedgates_task/features/home/presentation/screens/home.dart';
 
-// Assuming your ApiService is in api_service.dart
-
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  ServiceLocator.init();
+  Bloc.observer = Observe();
   runApp(
     DevicePreview(
       enabled: true,
@@ -21,15 +24,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Home Screen',
       theme: ThemeData(
-        // Define a default text color
-        textTheme: TextTheme(
-          bodyMedium: TextStyle(
-            fontFamily: GoogleFonts.ysabeauSc().fontFamily,
-            color: Colors.black,
-          ),
-        ),
+        brightness: Brightness.light,
       ),
       home: HomeScreen(),
     );

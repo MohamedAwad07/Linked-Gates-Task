@@ -23,6 +23,7 @@ class ApiService {
       Response response = await dio.get(
         '$baseUrl$endPoint',
       );
+
       if (response.statusCode == 200 || response.statusCode == 201) {
         return response;
       } else {

@@ -2,8 +2,8 @@ class Category {
   int? id;
   String? name;
   String? image;
-  DateTime? creationAt;
-  DateTime? updatedAt;
+  dynamic creationAt;
+  dynamic updatedAt;
 
   Category({
     this.id,
@@ -19,10 +19,10 @@ class Category {
         image: json['image'] as String?,
         creationAt: json['creationAt'] == null
             ? null
-            : DateTime.parse(json['creationAt'] as String),
+            : json['creationAt'] as String,
         updatedAt: json['updatedAt'] == null
             ? null
-            : DateTime.parse(json['updatedAt'] as String),
+            : json['updatedAt'] as String,
       );
 
   Map<String, dynamic> toJson() => {

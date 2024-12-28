@@ -7,6 +7,7 @@ environment:
   sdk: ^3.6.0
 
 dependencies:
+  bloc: ^8.1.4
   cached_network_image: ^3.4.1
   cupertino_icons: ^1.0.8
   device_preview: ^1.2.0
@@ -15,6 +16,8 @@ dependencies:
   equatable: ^2.0.7
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.6
+  get_it: ^8.0.3
   google_fonts: ^6.2.1
   internet_connection_checker: ^3.0.1
 

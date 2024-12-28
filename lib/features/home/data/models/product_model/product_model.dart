@@ -5,11 +5,11 @@ import 'category.dart';
 class ProductModel extends ProductEntity {
   int? id;
   String? title;
-  int? price;
+  num? price;
   String? description;
-  List<String>? images;
-  DateTime? creationAt;
-  DateTime? updatedAt;
+  List<dynamic>? images;
+  dynamic creationAt;
+  dynamic updatedAt;
   Category? category;
 
   ProductModel({
@@ -24,24 +24,25 @@ class ProductModel extends ProductEntity {
   }) : super(
           name: title ?? 'Unknown',
           productPrice: price ?? 0,
-          imageURL: images?.first ?? '',
+          imageURL: images?.first ?? images?.last ?? '',
+          productDescription: description ?? 'Not available',
         );
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
         id: json['id'] as int?,
         title: json['title'] as String?,
-        price: json['price'] as int?,
+        price: json['price'] as num?,
         description: json['description'] as String?,
-        images: json['images'] as List<String>?,
-        creationAt: json['creationAt'] == null ? null : DateTime.parse(json['creationAt'] as String),
-        updatedAt: json['updatedAt'] == null ? null : DateTime.parse(json['updatedAt'] as String),
-        category: json['category'] == null ? null : Category.fromJson(json['category'] as Map<String, dynamic>),
+        images: json['images'] as List<dynamic>?,
+        creationAt: json['creationAt'] == null ? null : json['creationAt'] as String,
+        updatedAt: json['updatedAt'] == null ? null :json['updatedAt'] as String,
+        category: json['category'] == null ? null : Category.fromJson(json['category']),
       );
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'title': title,
-        'price': productPrice,
+        'price': price,
         'description': description,
         'images': images,
         'creationAt': creationAt?.toIso8601String(),

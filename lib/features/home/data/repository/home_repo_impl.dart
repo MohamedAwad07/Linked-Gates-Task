@@ -1,6 +1,6 @@
 import 'package:either_dart/either.dart';
 import 'package:linkedgates_task/core/errors/failure.dart';
-import 'package:linkedgates_task/features/home/data/data_source/home_remote_datasource.dart';
+import 'package:linkedgates_task/features/home/data/data_source/home_remote_data_source.dart';
 import 'package:linkedgates_task/features/home/domain/entities/product_entity.dart';
 import 'package:linkedgates_task/features/home/domain/repository/home_repo.dart';
 
