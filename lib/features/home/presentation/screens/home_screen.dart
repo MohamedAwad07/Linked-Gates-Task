@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Future<void> handleRefresh(BuildContext context) async {
-    BlocProvider.of<GetProductsCubit>(context).getProducts();
+    await BlocProvider.of<GetProductsCubit>(context).getProducts();
   }
 
   @override
@@ -28,55 +28,81 @@ class _HomeScreenState extends State<HomeScreen> {
         child: BlocBuilder<GetProductsCubit, GetProductsState>(
           builder: (context, state) {
             if (state is GetProductsLoading) {
-              return ListView.separated(
-                padding: const EdgeInsets.all(15),
-                itemBuilder: (context, index) {
-                  return SkeletonizerHolder();
-                },
-                separatorBuilder: (context, index) => const SizedBox(height: 15),
-                itemCount: 10,
+              return RefreshIndicator(
+                onRefresh: () => handleRefresh(context),
+                child: ListView.separated(
+                  padding: const EdgeInsets.all(15),
+                  itemBuilder: (context, index) {
+                    return SkeletonizerHolder();
+                  },
+                  separatorBuilder: (context, index) => const SizedBox(height: 15),
+                  itemCount: 10,
+                ),
               );
             }
             if (state is GetProductsOnFailure) {
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+              return RefreshIndicator(
+                onRefresh: () => handleRefresh(context),
+                child: ListView(
                   children: [
-                    Text(
-                      state.message,
-                      style: TextStyle(color: Colors.red, fontSize: 16),
-                    ),
-                    SizedBox(height: 10),
-                    IconButton(
-                      onPressed: () {
-                        handleRefresh(context);
-                      },
-                      icon: Icon(Icons.refresh),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.8,
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              state.message,
+                              style: TextStyle(color: Colors.red, fontSize: 16),
+                            ),
+                            SizedBox(height: 10),
+                            IconButton(
+                              onPressed: () {
+                                handleRefresh(context);
+                              },
+                              icon: Icon(Icons.refresh),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
               );
             }
             if (state is GetProductsOnSuccess) {
-              return LayoutBuilder(
-                builder: (context, constraints) {
-                  bool isWideScreen = constraints.maxWidth > 750;
+              return RefreshIndicator(
+                onRefresh: () => handleRefresh(context),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    bool isWideScreen = constraints.maxWidth > 750;
 
-                  if (isWideScreen) {
-                    return DesktopLayout(
-                      state: state,
-                    );
-                  } else {
-                    return MobileLayout(
-                      state: state,
-                    );
-                  }
-                },
+                    if (isWideScreen) {
+                      return DesktopLayout(
+                        state: state,
+                      );
+                    } else {
+                      return MobileLayout(
+                        state: state,
+                      );
+                    }
+                  },
+                ),
               );
             }
 
-            return const Center(
-              child: Text('Unexpected state, please try again later.'),
+            return RefreshIndicator(
+              onRefresh: () => handleRefresh(context),
+              child: ListView(
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.8,
+                    child: const Center(
+                      child: Text('Unexpected state, please try again later.'),
+                    ),
+                  ),
+                ],
+              ),
             );
           },
         ),

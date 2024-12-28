@@ -6,7 +6,7 @@ class TextThemeHandler {
     return TextStyle(
       fontFamily: GoogleFonts.ysabeauSc().fontFamily,
       color: Colors.black54,
-      fontSize: 18,
+      fontSize: 15,
       fontWeight: FontWeight.bold,
     );
   }
@@ -21,7 +21,7 @@ class TextThemeHandler {
   static TextStyle priceStyle() {
     return TextStyle(
       fontFamily: GoogleFonts.roboto().fontFamily,
-      fontSize: 20,
+      fontSize: 15,
       color: Colors.redAccent,
       fontWeight: FontWeight.bold,
     );
@@ -29,14 +29,14 @@ class TextThemeHandler {
 
   static TextStyle ratingStyle() {
     return TextStyle(
-      fontSize: 15,
+      fontSize: 13,
       fontFamily: GoogleFonts.roboto().fontFamily,
     );
   }
 
   static TextStyle sizeLabelStyle() {
     return TextStyle(
-      fontSize: 16,
+      fontSize: 14,
       fontFamily: GoogleFonts.roboto().fontFamily,
     );
   }

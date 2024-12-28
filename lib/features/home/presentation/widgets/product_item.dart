@@ -81,7 +81,7 @@ class ProductCard extends StatelessWidget {
                     ),
                     Flexible(
                       child: Row(
-                        spacing: 10,
+                        spacing: 1,
                         children: [
                           Text(
                             "Size",
