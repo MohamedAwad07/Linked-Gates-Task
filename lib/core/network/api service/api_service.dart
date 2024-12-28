@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:linkedgates_task/core/errors/failure.dart';
 import 'package:linkedgates_task/core/utils/app_strings.dart';
 
-
 class ApiService {
   static const String baseUrl = "https://api.escuelajs.co/api/v1/";
   Dio dio = Dio(
@@ -38,7 +37,6 @@ class ApiService {
     }
   }
 
- 
   static Exception _handleError(dynamic e) {
     if (e.data != null) {
       final response = e.data;

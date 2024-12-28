@@ -1,5 +1,3 @@
-
-
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:linkedgates_task/core/utils/app_strings.dart';
@@ -12,7 +10,6 @@ abstract class Failure extends Equatable {
   @override
   List<Object> get props => [message];
 }
-
 
 class ServerFailure extends Failure {
   const ServerFailure({required super.message});

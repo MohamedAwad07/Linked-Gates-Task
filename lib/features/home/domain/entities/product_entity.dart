@@ -1,7 +1,7 @@
 class ProductEntity {
   final String name;
   final String imageURL;
-  final double price;
+  final num productPrice;
 
-  ProductEntity({required this.name, required this.price, required this.imageURL});
+  ProductEntity({required this.name, required this.productPrice, required this.imageURL});
 }

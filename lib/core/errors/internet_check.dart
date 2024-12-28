@@ -15,7 +15,8 @@ class NetworkInfoImpl implements NetworkInfo {
 
   @override
   Future<bool> checkInternet() async {
-    bool result = await InternetConnectionChecker.createInstance().hasConnection;
+    bool result =
+        await InternetConnectionChecker.createInstance().hasConnection;
     return result;
   }
 }
